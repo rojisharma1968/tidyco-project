@@ -196,7 +196,7 @@ const Navbar = () => {
             onClick={handleMenu}
             className="cursor-pointer block lg:hidden"
           >
-            {isMenu ? <X size={28} /> : <Menu size={28} />}
+            {isMenu ? <X size={35} /> : <Menu size={35} />}
           </button>
         </div>
       </div>

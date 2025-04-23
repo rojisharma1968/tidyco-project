@@ -109,9 +109,7 @@ const Home = () => {
                       name="service"
                       className="w-full cursor-pointer font-semibold border focus:outline-primary border-gray px-3 py-2.5 pr-10 rounded-md appearance-none"
                     >
-                      <option>Residential Cleaning</option>
-                      <option>Commercial Cleaning</option>
-                      <option>Move In/Out Cleaning</option>
+                      {['Residential Cleaning','Commercial Cleaning','Move In/Out Cleaning'].map(opt => <option key={opt}>{opt}</option>)}
                     </select>
                     {/* Custom arrow */}
                     <ChevronDown
@@ -181,7 +179,7 @@ const Home = () => {
                         type="date"
                         name="date"
                         defaultValue={new Date().toISOString().split("T")[0]}
-                        className="w-full cursor-pointer outline-primary border border-gray px-3 py-2 font-semibold rounded-md appearance-none pl-10"
+                        className="w-full cursor-pointer outline-primary border border-gray py-2 font-semibold rounded-md appearance-none pl-10"
                       />
                     </div>
                   </div>
@@ -202,7 +200,7 @@ const Home = () => {
                           hour: "2-digit",
                           minute: "2-digit",
                         })}
-                        className="w-full outline-primary cursor-pointer border border-gray font-semibold px-3 py-2 rounded-md appearance-none pl-10"
+                        className="w-full outline-primary cursor-pointer border border-gray font-semibold py-2 rounded-md appearance-none pl-10"
                       />
                     </div>
                   </div>
