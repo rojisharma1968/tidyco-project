@@ -55,27 +55,9 @@ const Navbar = () => {
 
   useEffect(() => {
     if (isFormVisible || isMenu) {
-      document.body.classList.add(
-        "after:w-full",
-        "after:h-screen",
-        "after:fixed",
-        "after:left-0",
-        "after:top-0",
-        "after:bg-black/30",
-        "after:z-30",
-        "overflow-hidden"
-      );
+      document.body.classList.add("InView");
     } else {
-      document.body.classList.remove(
-        "after:w-full",
-        "after:h-screen",
-        "after:fixed",
-        "after:left-0",
-        "after:top-0",
-        "after:bg-black/30",
-        "after:z-30",
-        "overflow-hidden"
-      );
+      document.body.classList.remove("InView");
     }
   }, [isFormVisible, isMenu]);
 
