@@ -20,8 +20,8 @@ const Home = () => {
           loading="lazy"
         />
         <div className="w-full py-12 2xl:py-20 bg-black/50 relative z-[2]">
-          <div className="container mx-auto flex items-center">
-            <div className="w-1/2 pr-5 relative">
+          <div className="container mx-auto flex flex-wrap items-center">
+            <div className="w-full lg:w-1/2 lg:pr-5 relative">
               <PageHeading text='<span class="text-primary">Sparkling</span> Clean Homes, <span class="text-primary">Booked</span> in Seconds!' />
               <img
                 src="../images/line.webp"
@@ -29,9 +29,9 @@ const Home = () => {
                 loading="lazy"
                 width={183}
                 height={135}
-                className="w-40 h-auto absolute right-5 top-1/2 -translate-y-1/2"
+                className="w-40 h-auto hidden lg:block absolute right-5 top-1/2 -translate-y-1/2"
               />
-              <p className="text-lg font-normal w-[90%] text-white mt-5">
+              <p className="text-lg font-normal lg:w-[90%] text-white mt-5">
                 Professional cleaners at your doorstep, with flexible hourly
                 rates.
               </p>
@@ -64,7 +64,7 @@ const Home = () => {
                   </p>
                 </div>
               </div>
-              <div className="mt-8 bg-white w-[90%] relative px-8 pt-8 pb-12 rounded-2xl">
+              <div className="mt-8 hidden md:block bg-white w-[90%] relative px-8 pt-8 pb-12 rounded-2xl">
                 <p className="text-5xl 2xl:text-6xl font-bold text-black-heading">
                   $220
                 </p>
@@ -91,13 +91,13 @@ const Home = () => {
                 />
               </div>
             </div>
-            <div className="w-1/2 text-sm 2xl:text-base text-black-heading">
-              <h2 className="bg-primary text-white w-2/4 text-center mx-auto py-1.5 rounded-t-lg font-bold text-lg 2xl:text-xl">
+            <div className="w-full mt-10 lg:w-1/2 text-sm 2xl:text-base text-black-heading">
+              <h2 className="bg-primary text-white w-[80%] lg:w-2/4 text-center mx-auto py-1.5 rounded-t-lg font-bold text-lg 2xl:text-xl">
                 Get Free Quotation
               </h2>
               <form
                 onSubmit={(e) => e.preventDefault()}
-                className="w-full bg-white px-8 py-10 rounded-4xl"
+                className="w-full bg-white px-5 lg:px-8 py-6 lg:py-10 rounded-xl lg:rounded-4xl"
               >
                 {/* Service Required */}
                 <div className="mb-4 relative">
@@ -340,21 +340,21 @@ const Home = () => {
           loading="lazy"
         />
         <div className="container mx-auto flex flex-wrap items-center">
-          <div className="w-full relative md:w-1/2 flex justify-center mt-8 md:mt-0">
+          <div className="w-full relative md:w-1/2 flex justify-center md:mt-0">
             <img
               src="../images/chooseus1.webp"
               alt="cleaners-group"
               loading="lazy"
-              className="rounded-3xl w-full h-full object-cover"
+              className="rounded-2xl lg:rounded-3xl w-full h-full object-cover"
             />
             <img
               src="../images/chooseus2.webp"
               alt="cleaner-action"
               loading="lazy"
-              className="rounded-[50px] border-[15px] border-blackbg w-[42%] h-auto absolute -bottom-10 right-10"
+              className="rounded-3xl lg:rounded-[50px] border-[8px] lg:border-[15px] border-blackbg w-[42%] h-auto absolute -bottom-10 right-10"
             />
           </div>
-          <div className="w-full md:w-1/2 pl-8">
+          <div className="w-full md:w-1/2 lg:pl-8 mt-15 lg:mt-0">
             <SectionHeading
               align="text-left"
               color="text-white"
@@ -385,7 +385,7 @@ const Home = () => {
               ].map((item, index) => (
                 <div
                   key={index}
-                  className="bg-white relative overflow-hidden px-6 py-2 xl:py-4 2xl:px-8 2xl:py-6 rounded-2xl shadow-md text-black"
+                  className="bg-white relative overflow-hidden px-6 py-4 2xl:px-8 2xl:py-6 rounded-2xl shadow-md text-black"
                 >
                   <h3 className="text-xl 2xl:text-2xl font-bold">
                     {item.title}
@@ -404,32 +404,35 @@ const Home = () => {
         </div>
       </section>
       <section className="review-section mt-18">
-        <div className="container mx-auto flex gap-20 items-center">
+        <div className="container mx-auto flex flex-col lg:flex-row gap-5 lg:gap-20">
           <div>
             <SectionHeading
-              align="text-left"
+              align=" text-left"
               text="Happy <span class='text-primary'>Customers</span>"
             />
             <SectionParagraph
-              align="text-left"
+              align=" text-left"
               text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"
             />
           </div>
           <Button text="Read More" />
         </div>
-        <div className="cursor-grab active:cursor-grabbing overflow-x-hidden mt-10">
+        <div className="cursor-grab active:cursor-grabbing overflow-x-hidden mt-15 lg:mt-10">
           <Swiper
             slidesPerView={1}
             spaceBetween={40}
             breakpoints={{
-              640: {
-                slidesPerView: 1,
+              0: {
+                slidesPerView: 1.3,
+                centeredSlides:true,
+                spaceBetween:10
               },
               768: {
                 slidesPerView: 2,
               },
               1000: {
                 slidesPerView: 3,
+                centeredSlides:false
               },
               1200: {
                 slidesPerView: 4.2,
@@ -451,7 +454,7 @@ const Home = () => {
               })
               .map((review, index) => (
                 <SwiperSlide className="relative" key={index}>
-                  <span className="size-14 absolute right-0 top-0">
+                  <span className="size-8 lg:size-14 absolute right-8 lg:right-0 top-0">
                     <svg
                       className="size-full"
                       width="60"
@@ -511,7 +514,7 @@ const Home = () => {
           loading="lazy"
           className="w-full h-full absolute left-0 top-0 z-[1]"
         />
-        <div className="container relative z-[2] mx-auto flex gap-20 items-center">
+        <div className="container relative z-[2] mx-auto flex flex-col lg:flex-row gap-5 lg:gap-20">
           <div>
             <SectionHeading
               align="text-left"
@@ -527,26 +530,26 @@ const Home = () => {
           <Button bcolor="border-[#254453]" text="Get a Quote" />
         </div>
       </section>
-      <section className="relative choose-section mt-18">
-        <SectionHeading text="Why <span class='text-primary'>Choose</span> Us?" />
+      <section className="relative choose-section mb-15 lg:mb-0 mt-18">
+        <SectionHeading text="Frequently Asked <span class='text-primary'>Questions</span>" />
         <SectionParagraph text="Professional cleaners at your doorstep, with flexible hourly rates." />
         <img
           src="../images/contact.webp"
           alt="vacum-img"
-          className="w-60 xl:w-70 2xl:w-82 h-auto absolute bottom-0 -left-10 xl:left-0"
+          className="w-60 xl:w-70 hidden lg:block 2xl:w-82 h-auto absolute bottom-0 -left-10 xl:left-0"
           loading="lazy"
         />
-        <div className="container mx-auto flex flex-wrap items-end pb-20 mt-8">
-          <div className="w-full relative md:w-1/2 flex justify-center pr-18 2xl:pr-30">
+        <div className="container mx-auto flex flex-wrap items-end lg:pb-20 mt-8">
+          <div className="w-full relative md:w-1/2 flex justify-center lg:pr-18 2xl:pr-30">
             <img
               src="../images/line-black.webp"
               alt="line-image"
               loading="lazy"
               width={183}
               height={135}
-              className="w-30 h-auto absolute right-5 top-5 -translate-y-1/2"
+              className="w-30 h-auto hidden lg:block absolute right-5 top-5 -translate-y-1/2"
             />
-            <div className="w-full mx-auto bg-transparent mt-5 pl-25 xl:pl-20 2xl:pl-0">
+            <div className="w-full mx-auto bg-transparent mt-5 lg:pl-25 xl:pl-20 2xl:pl-0">
               <h2 className="text-2xl font-bold mb-6">Contact Us</h2>
               <form onSubmit={(e) => e.preventDefault()}>
                 <div className="mb-4">
@@ -571,7 +574,7 @@ const Home = () => {
               </form>
             </div>
           </div>
-          <div className="w-full md:w-1/2">
+          <div className="w-full md:w-1/2 mt-8 lg:mt-0">
             <div className="grid gap-4 mt-5">
               {Array(6)
                 .fill({

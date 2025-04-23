@@ -10,6 +10,14 @@
   --text-5xl: 3.1875rem; /* 51px converted to rem assuming 16px base font size */
 }
 
+
+.container {
+  @media (width >= 0) {
+      max-width: 90%;
+  }
+}
+
+
 .container {
   @media (width >= 60rem) {
       max-width: 55rem;

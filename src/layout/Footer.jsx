@@ -67,7 +67,7 @@ const Footer = () => {
         { text: "AirBnB Cleaning", href: "/airBnB-cleaning" },
         { text: "Commercial Cleaning", href: "/commercial-cleaning" },
       ],
-      className: "w-fit pl-15",
+      className: "lg:w-fit lg:pl-15",
     },
     {
       title: "BUSINESS HOURS",
@@ -81,7 +81,7 @@ const Footer = () => {
 
   return (
     <footer className="footer-section bg-blackbg pt-10 text-white">
-      <div className="container mx-auto grid grid-cols-1 md:grid-cols-3">
+      <div className="container mx-auto grid grid-cols-1 gap-y-8 md:grid-cols-3">
         <div>
           <img
             src="../images/logo-white.webp"

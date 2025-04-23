@@ -1,25 +1,28 @@
 import React, { useRef, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Button from "../components/Button";
-import { X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 
 const Navbar = () => {
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
-  const [isFormVisible, setIsFormVisible] = useState(false); // state to toggle form visibility
-  const formContainer = useRef(); // container for the form to detect outside clicks
-  const buttonRef = useRef(); // reference to the button
+  const [isFormVisible, setIsFormVisible] = useState(false);
+  const formContainer = useRef();
+  const buttonRef = useRef();
+  const [isMenu, setMenu] = useState(false);
 
-  // Function to toggle the form visibility
+  const handleMenu = () => {
+    setMenu((prev) => !prev);
+  };
+
   const handleToggleForm = () => {
-    setIsFormVisible((prev) => !prev); // Toggle form visibility on button click
+    setIsFormVisible((prev) => !prev);
   };
 
   const handleCloseForm = () => {
-    setIsFormVisible(false); // Close the form
+    setIsFormVisible(false);
   };
 
-  // Close form when clicked outside the form container
   useEffect(() => {
     const handleOutsideClick = (e) => {
       if (
@@ -27,14 +30,12 @@ const Navbar = () => {
         !formContainer.current.contains(e.target) &&
         !buttonRef.current.contains(e.target)
       ) {
-        handleCloseForm(); // Close the form if clicked outside
+        handleCloseForm();
       }
     };
 
-    // Add event listener to detect clicks outside
     document.addEventListener("mousedown", handleOutsideClick);
 
-    // Cleanup the event listener on component unmount
     return () => document.removeEventListener("mousedown", handleOutsideClick);
   }, []);
 
@@ -52,9 +53,8 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [lastScrollY]);
 
-  // Add classes to the body when form is visible
   useEffect(() => {
-    if (isFormVisible) {
+    if (isFormVisible || isMenu) {
       document.body.classList.add(
         "after:w-full",
         "after:h-screen",
@@ -77,7 +77,7 @@ const Navbar = () => {
         "overflow-hidden"
       );
     }
-  }, [isFormVisible]);
+  }, [isFormVisible, isMenu]);
 
   return (
     <nav
@@ -94,8 +94,12 @@ const Navbar = () => {
           alt="website-logo"
           loading="eager"
         />
-        <div className="flex items-center gap-5">
-          <div className="flex items-center gap-6">
+        <div className="flex items-center gap-3 lg:gap-5">
+          <div
+            className={`${
+              isMenu ? "h-fit py-8" : "h-0 py-0"
+            } absolute overflow-hidden top-full duration-300 w-full px-5 lg:h-fit lg:p-0 bg-white left-0 flex flex-col lg:static lg:flex-row lg:items-center gap-6`}
+          >
             {["Quote", "About Us", "Work With Us", "FAQ", "Contact"].map(
               (link, index) => (
                 <Link
@@ -108,10 +112,10 @@ const Navbar = () => {
             )}
           </div>
           <div className="flex items-center gap-3">
-            <div className="relative">
+            <div className="lg:relative">
               <button
-                ref={buttonRef} // Referencing the button to handle click outside
-                onClick={handleToggleForm} // Toggle form visibility on button click
+                ref={buttonRef}
+                onClick={handleToggleForm}
                 className="cursor-pointer bg-black border-2 border-[#b9b9b9] inline-flex justify-center size-9 p-2 rounded-full"
               >
                 {!isFormVisible ? (
@@ -140,13 +144,13 @@ const Navbar = () => {
               {isFormVisible && (
                 <div
                   ref={formContainer}
-                  className="p-6 absolute left-1/2 -translate-x-1/2 top-[250%] bg-white rounded-2xl shadow-md w-96"
+                  className="p-6 absolute left-1/2 -translate-x-1/2 top-[110%] lg:top-[250%] bg-white rounded-2xl shadow-md w-[90%] lg:w-96"
                 >
                   <span
                     style={{
                       clipPath: "polygon(50% 0%, 0% 100%, 100% 100%)",
                     }}
-                    className="block w-8 h-6 absolute -top-6 left-1/2 -translate-x-1/2 bg-white"
+                    className="w-8 h-6 hidden md:block absolute -top-6 left-1/2 -translate-x-1/2 bg-white"
                   />
                   <h2 className="text-2xl font-bold text-black-heading text-center mb-4">
                     Sign In
@@ -194,15 +198,24 @@ const Navbar = () => {
                   </button>
                   <p className="text-center text-sm text-black-heading mt-4">
                     Don’t have an Account?{" "}
-                    <a href="#" className="text-primary font-bold hover:underline">
+                    <a
+                      href="#"
+                      className="text-primary font-bold hover:underline"
+                    >
                       SIGN UP
                     </a>
                   </p>
                 </div>
               )}
             </div>
-            <Button text="Book Now" />
+            <Button isShow="hidden lg:block" text="Book Now" />
           </div>
+          <button
+            onClick={handleMenu}
+            className="cursor-pointer block lg:hidden"
+          >
+            {isMenu ? <X size={28} /> : <Menu size={28} />}
+          </button>
         </div>
       </div>
     </nav>

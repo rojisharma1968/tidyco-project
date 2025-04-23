@@ -4,7 +4,7 @@ const PageHeading = ({ text }) => {
   return (
     <h1
       dangerouslySetInnerHTML={{ __html: text }}
-      className="leading-[1.3] w-[90%] text-5xl font-bold text-white"
+      className="leading-[1.3] lg:w-[90%] text-4xl lg:text-5xl font-bold text-white"
     ></h1>
   );
 };
