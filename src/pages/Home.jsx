@@ -336,7 +336,7 @@ const Home = () => {
         <img
           src="../images/vacum.webp"
           alt="vacum-img"
-          className="w-70 2xl:w-88 h-auto absolute top-1/2 -translate-y-1/2 "
+          className="w-65 2xl:w-85 h-auto absolute bottom-20"
           loading="lazy"
         />
         <div className="container mx-auto flex flex-wrap items-center">
@@ -365,7 +365,7 @@ const Home = () => {
               color="text-white"
               text="Professional cleaners at your doorstep, with flexible hourly rates."
             />
-            <div className="grid gap-4 mt-5">
+            <div className="grid gap-4 mt-5 2xl:mt-8">
               {[
                 {
                   title: "Vetted & Trained Cleaners",
@@ -385,7 +385,7 @@ const Home = () => {
               ].map((item, index) => (
                 <div
                   key={index}
-                  className="bg-white relative overflow-hidden px-6 py-2 xl:py-4 2xl:py-6 rounded-2xl shadow-md text-black"
+                  className="bg-white relative overflow-hidden px-6 py-2 xl:py-4 2xl:px-8 2xl:py-6 rounded-2xl shadow-md text-black"
                 >
                   <h3 className="text-xl 2xl:text-2xl font-bold">
                     {item.title}
