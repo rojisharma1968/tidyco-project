@@ -1,13 +1,13 @@
 import React from "react";
 import PageHeading from "../components/PageHeading";
 import { CalendarDays, ChevronDown, Clock } from "lucide-react";
-import CheckButton from "../components/checkButton";
 import Button from "../components/Button";
 import SectionHeading from "../components/SectionHeading";
 import SectionParagraph from "../components/SectionParagraph";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import AccordionItem from "../components/AccordionItem";
+import CheckButton from "../components/CheckButton";
 
 const Home = () => {
   return (

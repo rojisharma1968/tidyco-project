@@ -1,6 +1,6 @@
 import React from "react";
 
-const CheckButton = ({title, values, padding}) => {
+const CheckButton = ({ title, values, padding }) => {
   return (
     <div className="flex gap-2 flex-wrap">
       {values.map((opt) => (
@@ -14,7 +14,11 @@ const CheckButton = ({title, values, padding}) => {
             }
             className="peer hidden"
           />
-          <div className={`${padding ? padding : 'px-4'} py-1.5 font-semibold rounded border-[#DCDCDC] border peer-checked:text-primary peer-checked:border-primary  peer-checked:bg-primary/30`}>
+          <div
+            className={`${
+              padding ? padding : "px-4"
+            } py-1.5 font-semibold rounded border-[#DCDCDC] border peer-checked:text-primary peer-checked:border-primary  peer-checked:bg-primary/30`}
+          >
             {opt}
           </div>
         </label>
