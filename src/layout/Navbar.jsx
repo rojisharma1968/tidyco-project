@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation} from "react-router-dom";
 import Button from "../components/Button";
 import { Menu, X } from "lucide-react";
 
@@ -10,6 +10,7 @@ const Navbar = () => {
   const formContainer = useRef();
   const buttonRef = useRef();
   const [isMenu, setMenu] = useState(false);
+  const {pathname} = useLocation()
 
   const handleMenu = () => {
     setMenu((prev) => !prev);
@@ -61,6 +62,10 @@ const Navbar = () => {
     }
   }, [isFormVisible, isMenu]);
 
+  useEffect(()=>{
+    setIsFormVisible(false)
+  },[pathname])
+
   return (
     <nav
       className={`bg-white transition-transform z-40 duration-300 ${
@@ -68,14 +73,16 @@ const Navbar = () => {
       } sticky top-0 left-0 w-full`}
     >
       <div className="container mx-auto flex items-center justify-between">
-        <img
-          src="../images/logo.webp"
-          width={114}
-          height={64}
-          className="w-32 h-auto"
-          alt="website-logo"
-          loading="eager"
-        />
+        <Link to='/' className="size-fit inline-block">
+          <img
+            src="../images/logo.webp"
+            width={114}
+            height={64}
+            className="w-32 h-auto"
+            alt="website-logo"
+            loading="eager"
+          />
+        </Link>
         <div className="flex items-center gap-3 lg:gap-5">
           <div
             className={`${
@@ -180,12 +187,12 @@ const Navbar = () => {
                   </button>
                   <p className="text-center text-sm text-black-heading mt-4">
                     Don’t have an Account?{" "}
-                    <a
-                      href="#"
+                    <Link
+                      to="/signup"
                       className="text-primary font-bold hover:underline"
                     >
                       SIGN UP
-                    </a>
+                    </Link>
                   </p>
                 </div>
               )}

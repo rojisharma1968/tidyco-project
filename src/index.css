@@ -12,7 +12,14 @@
 
 .container {
   @media (width >= 0) {
-    max-width: 90%;
+    max-width: 92%;
+  }
+}
+
+
+.container {
+  @media (width >= 786) {
+    max-width: 95%;
   }
 }
 
